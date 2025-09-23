@@ -4,11 +4,11 @@ const questions = [
         image: "test_image.png",
         answers: {
             F: {
-                text: "Unna!",
+                text: "I'm just so tired and can't wait to go home. Why does everyday feel the same...",
                 scores: { T: 0, F: +1 },
             },
             T: {
-                text: "Oi!",
+                text: "Should I rest or work first when I get home? Most importantly, what's for dinner?",
                 scores: { T: +1, F: 0 },
             },
         },
@@ -18,11 +18,11 @@ const questions = [
         image: "test_image.png",
         answers: {
             J: {
-                text: "Unna!",
+                text: "I don't remember this tunnel. *Pull out your phone to look at the map*",
                 scores: { P: 0, J: +1 },
             },
             P: {
-                text: "Oi!",
+                text: "*Turn around to see the other's reaction* Should I ask the driver what's going on?",
                 scores: { P: +1, J: 0 },
             },
         },
@@ -32,11 +32,11 @@ const questions = [
         image: "test_image.png",
         answers: {
             S: {
-                text: "Unna!",
+                text: "Ok this is weird, am I dreaming? *pinch your arm*",
                 scores: { S: +1, N: 0 },
             },
             N: {
-                text: "Oi!",
+                text: "Is this a prank? Am I getting kidnapped by aliens?!",
                 scores: { S: 0, N: +1 },
             },
         },
@@ -46,11 +46,11 @@ const questions = [
         image: "test_image.png",
         answers: {
             F: {
-                text: "Unna!",
+                text: "Woahhh...so many cats! How cute!! I wanna give them a hug!",
                 scores: { T: 0, F: +1 },
             },
             T: {
-                text: "Oi!",
+                text: "Cats? In space? That's kinda odd... How do they survive out there?!",
                 scores: { T: +1, F: 0 },
             },
         },
@@ -60,11 +60,11 @@ const questions = [
         image: "test_image.png",
         answers: {
             P: {
-                text: "Unna!",
+                text: "Cool! A space cruise?! Where are we going? Do I get a spacesuit? This is so exciting!",
                 scores: { P: +1, J: 0 },
             },
             J: {
-                text: "Oi!",
+                text: "Hey uh...Am I in space? How did I get here? When can I go home?! Why..",
                 scores: { P: 0, J: +1 },
             },
         },
@@ -74,11 +74,11 @@ const questions = [
         image: "test_image.png",
         answers: {
             I: {
-                text: "Unna!",
+                text: "Solar system themed fountain in the middle. I want to take pictures with it.",
                 scores: { I: 0, E: +1 },
             },
             E: {
-                text: "Oi!",
+                text: "Cozy corner with a massaging chair. I need to sit down and process.",
                 scores: { I: +1, E: 0 },
             },
         },
@@ -88,10 +88,10 @@ const questions = [
         image: "test_image.png",
         answers: {
             K: {
-                text: "No, Patrick, Mayonnaise is not an instrument. Horseradish is not an instrument either.",
+                text: "Wait...was that Bob?",
             },
             U: {
-                text: "Are you feeling it now, Mr. Krabs?",
+                text: "Oh no...Do I have to go through this again?",
             },
         },
     },
