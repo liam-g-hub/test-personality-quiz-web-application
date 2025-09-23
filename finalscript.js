@@ -1,182 +1,182 @@
 const questions = [
     {
-        question: "Question 1.",
+        question: "You have to shop for groceries today! What are you wearing?",
         image: "test_image.png",
         answers: {
             A1_1: {
-                text: "Unna!",
+                text: "Comfy and casual",
                 scores: { T: 0, F: +1 },
             },
             
             A2_1: {
-                text: "Uwa Uwa",
+                text: "Full-on work mode",
                 scores: { T: 0, F: +1 },
             },
 
             A3_1: {
-                text: "Oi!",
+                text: "The coolest drip ever",
                 scores: { T: +1, F: 0 },
             },
 
             A4_1: {
-                text: "HAHHHHHHHH",
+                text: "I’ll go there in my pajamas",
                 scores: { T: +1, F: 0 },
             },
 
             A5_1: {
-                text: "Meeeeeeeteeeeee....",
+                text: "Something very aesthetic",
                 scores: { T: +1, F: 0 },
             },
         },
     },
     {
-        question: "Question 2.",
+        question: "What's your mood today?",
         image: "test_image.png",
         answers: {
             A1_2: {
-                text: "Unna!",
+                text: "Calm and collected",
                 scores: { T: 0, F: +1 },
             },
 
             A2_2: {
-                text: "Uwa Uwa",
+                text: "Absolutely locked in",
                 scores: { T: 0, F: +1 },
             },
 
             A3_2: {
-                text: "Oi!",
+                text: "All hands, ready for drama",
                 scores: { T: +1, F: 0 },
             },
 
             A4_2: {
-                text: "HAHHHHHHHH",
+                text: "No thoughts, empty head",
                 scores: { T: +1, F: 0 },
             },
 
             A5_2: {
-                text: "Meeeeeeeteeeeee....",
+                text: "I wanna get this over with",
                 scores: { T: +1, F: 0 },
             },
 
         },
     },
     {
-        question: "Question 3.",
+        question: "What's your shopping cart vibe?",
         image: "test_image.png",
         answers: {
             A1_3: {
-                text: "Unna!",
+                text: "Balanced! Boring but everything you need :)",
                 scores: { T: 0, F: +1 },
             },
 
             A2_3: {
-                text: "Uwa Uwa",
+                text: "Functional like quick snacks and energy boosts.",
                 scores: { T: 0, F: +1 },
             },
 
             A3_3: {
-                text: "Oi!",
+                text: "Daring; full of herbs, spices and trying new things out ",
                 scores: { T: +1, F: 0 },
             },
 
             A4_3: {
-                text: "HAHHHHHHHH",
+                text: "Absolutely messy. I'll put anything if I could",
                 scores: { T: +1, F: 0 },
             },
 
             A5_3: {
-                text: "Meeeeeeeteeeeee....",
+                text: "Chock-full of artisanal products that caters to a niche taste",
                 scores: { T: +1, F: 0 },
             },
         },
     },
     {
-        question: "Question 4.",
+        question: "It's time to shop! Where do you wanna go",
         image: "test_image.png",
         answers: {
             A1_4: {
-                text: "Unna!",
+                text: "Fresh and produce corner",
                 scores: { T: 0, F: +1 },
             },
 
             A2_4: {
-                text: "Uwa Uwa",
+                text: "Coffee and drinks aisle",
                 scores: { T: 0, F: +1 },
             },
 
             A3_4: {
-                text: "Oi!",
+                text: "Bakery section",
                 scores: { T: +1, F: 0 },
             },
 
             A4_4: {
-                text: "HAHHHHHHHH",
+                text: "Candy and snacks area",
                 scores: { T: +1, F: 0 },
             },
 
             A5_4: {
-                text: "Meeeeeeeteeeeee....",
+                text: "Free tastings",
                 scores: { T: +1, F: 0 },
             },
         },
     },
     {
-        question: "Question 5.",
+        question: "Put your headphones on. What are you listening?",
         image: "test_image.png",
         answers: {
             A1_5: {
-                text: "Unna!",
+                text: "Chill lo-fi playlists or relaxing music",
                 scores: { T: 0, F: +1 },
             },
 
             A2_5: {
-                text: "Uwa Uwa",
+                text: "Podcasts or listening to the radio",
                 scores: { T: 0, F: +1 },
             },
 
             A3_5: {
-                text: "Oi!",
+                text: "Tracks that simply vibe with you",
                 scores: { T: +1, F: 0 },
             },
 
             A4_5: {
-                text: "HAHHHHHHHH",
+                text: "The most random songs that you hear when you shuffle",
                 scores: { T: +1, F: 0 },
             },
 
             A5_5: {
-                text: "Meeeeeeeteeeeee....",
+                text: "Just listening to a vlog or a YouTube commentary",
                 scores: { T: +1, F: 0 },
             },
 
         },
     },
     {
-        question: "Question 6.",
+        question: "It's time to check out! What's your call?",
         image: "test_image.png",
         answers: {
             A1_6: {
-                text: "Unna!",
+                text: "Organizing your items while patiently waiting",
                 scores: { T: 0, F: +1 },
             },
 
             A2_6: {
-                text: "Uwa Uwa",
+                text: " Checking your phone for any emails, schedules, etc.",
                 scores: { T: 0, F: +1 },
             },
 
             A3_6: {
-                text: "Oi!",
+                text: "Casually gossiping with the cashier or the customers behind you",
                 scores: { T: +1, F: 0 },
             },
 
             A4_6: {
-                text: "HAHHHHHHHH",
+                text: "Doomscrolling or watching brainrot videos from your phone",
                 scores: { T: +1, F: 0 },
             },
 
             A5_6: {
-                text: "Meeeeeeeteeeeee....",
+                text: "Daydreaming",
                 scores: { T: +1, F: 0 },
             },
 
@@ -301,17 +301,6 @@ function handleAnswer(event) {
     for (const dimension in answer.scores) {
         userAnswers[dimension] = (userAnswers[dimension] || 0) + answer.scores[dimension];
     }
-
-    // remove this when done debugging
-    // Display the scores for each letter
-    
-    // const scoresContainer = document.querySelector('.scores-container');
-    // scoresContainer.innerHTML = `
-        // <p>E Score: ${userAnswers['E'] || 0}, S Score: ${userAnswers['S'] || 0}, T Score: ${userAnswers['T'] || 0}, P Score: ${userAnswers['P'] || 0}</p>
-        // <p>I Score: ${userAnswers['I'] || 0}, N Score: ${userAnswers['N'] || 0}, F Score: ${userAnswers['F'] || 0}, J Score: ${userAnswers['J'] || 0}</p>
-    
-    //`;
-    // to here
 
     if (currentQuestion < questions.length - 1) {
         currentQuestion++;
