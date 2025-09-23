@@ -3,18 +3,28 @@ const questions = [
         question: "Question 1.",
         image: "test_image.png",
         answers: {
-            F: {
+            A1_1: {
                 text: "Unna!",
                 scores: { T: 0, F: +1 },
             },
             
-            B: {
-                text: "Uwa!",
+            A2_1: {
+                text: "Uwa Uwa",
                 scores: { T: 0, F: +1 },
             },
 
-            T: {
+            A3_1: {
                 text: "Oi!",
+                scores: { T: +1, F: 0 },
+            },
+
+            A4_1: {
+                text: "HAHHHHHHHH",
+                scores: { T: +1, F: 0 },
+            },
+
+            A5_1: {
+                text: "Meeeeeeeteeeeee....",
                 scores: { T: +1, F: 0 },
             },
         },
@@ -23,27 +33,60 @@ const questions = [
         question: "Question 2.",
         image: "test_image.png",
         answers: {
-            J: {
+            A1_2: {
                 text: "Unna!",
-                scores: { P: 0, J: +1 },
+                scores: { T: 0, F: +1 },
             },
-            P: {
+
+            A2_2: {
+                text: "Uwa Uwa",
+                scores: { T: 0, F: +1 },
+            },
+
+            A3_2: {
                 text: "Oi!",
-                scores: { P: +1, J: 0 },
+                scores: { T: +1, F: 0 },
             },
+
+            A4_2: {
+                text: "HAHHHHHHHH",
+                scores: { T: +1, F: 0 },
+            },
+
+            A5_2: {
+                text: "Meeeeeeeteeeeee....",
+                scores: { T: +1, F: 0 },
+            },
+
         },
     },
     {
         question: "Question 3.",
         image: "test_image.png",
         answers: {
-            S: {
+            A1_3: {
                 text: "Unna!",
-                scores: { S: +1, N: 0 },
+                scores: { T: 0, F: +1 },
             },
-            N: {
+
+            A2_3: {
+                text: "Uwa Uwa",
+                scores: { T: 0, F: +1 },
+            },
+
+            A3_3: {
                 text: "Oi!",
-                scores: { S: 0, N: +1 },
+                scores: { T: +1, F: 0 },
+            },
+
+            A4_3: {
+                text: "HAHHHHHHHH",
+                scores: { T: +1, F: 0 },
+            },
+
+            A5_3: {
+                text: "Meeeeeeeteeeeee....",
+                scores: { T: +1, F: 0 },
             },
         },
     },
@@ -51,12 +94,28 @@ const questions = [
         question: "Question 4.",
         image: "test_image.png",
         answers: {
-            F: {
+            A1_4: {
                 text: "Unna!",
                 scores: { T: 0, F: +1 },
             },
-            T: {
+
+            A2_4: {
+                text: "Uwa Uwa",
+                scores: { T: 0, F: +1 },
+            },
+
+            A3_4: {
                 text: "Oi!",
+                scores: { T: +1, F: 0 },
+            },
+
+            A4_4: {
+                text: "HAHHHHHHHH",
+                scores: { T: +1, F: 0 },
+            },
+
+            A5_4: {
+                text: "Meeeeeeeteeeeee....",
                 scores: { T: +1, F: 0 },
             },
         },
@@ -65,28 +124,62 @@ const questions = [
         question: "Question 5.",
         image: "test_image.png",
         answers: {
-            P: {
+            A1_5: {
                 text: "Unna!",
-                scores: { P: +1, J: 0 },
+                scores: { T: 0, F: +1 },
             },
-            J: {
+
+            A2_5: {
+                text: "Uwa Uwa",
+                scores: { T: 0, F: +1 },
+            },
+
+            A3_5: {
                 text: "Oi!",
-                scores: { P: 0, J: +1 },
+                scores: { T: +1, F: 0 },
             },
+
+            A4_5: {
+                text: "HAHHHHHHHH",
+                scores: { T: +1, F: 0 },
+            },
+
+            A5_5: {
+                text: "Meeeeeeeteeeeee....",
+                scores: { T: +1, F: 0 },
+            },
+
         },
     },
     {
         question: "Question 6.",
         image: "test_image.png",
         answers: {
-            I: {
+            A1_6: {
                 text: "Unna!",
-                scores: { I: 0, E: +1 },
+                scores: { T: 0, F: +1 },
             },
-            E: {
+
+            A2_6: {
+                text: "Uwa Uwa",
+                scores: { T: 0, F: +1 },
+            },
+
+            A3_6: {
                 text: "Oi!",
-                scores: { I: +1, E: 0 },
+                scores: { T: +1, F: 0 },
             },
+
+            A4_6: {
+                text: "HAHHHHHHHH",
+                scores: { T: +1, F: 0 },
+            },
+
+            A5_6: {
+                text: "Meeeeeeeteeeeee....",
+                scores: { T: +1, F: 0 },
+            },
+
         },
     },
     {
