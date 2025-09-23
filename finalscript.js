@@ -1,97 +1,97 @@
 const questions = [
     {
-        question: "Q1/12: You're taking the bus on your way back home. It's been a loooong day, what are you thinking about?",
+        question: "Question 1.",
         image: "test_image.png",
         answers: {
             F: {
-                text: "I'm just so tired and can't wait to go home. Why does everyday feel the same...",
+                text: "Unna!",
                 scores: { T: 0, F: +1 },
             },
             T: {
-                text: "Should I rest or work first when I get home? Most importantly, what's for dinner?",
+                text: "Oi!",
                 scores: { T: +1, F: 0 },
             },
         },
     },
     {
-        question: "Q2/12: You look outside the windows, seems like it's going to rain soon. Suddenly everything turns into darkness!!",
+        question: "Question 2.",
         image: "test_image.png",
         answers: {
             J: {
-                text: "I don't remember this tunnel. *Pull out your phone to look at the map*",
+                text: "Unna!",
                 scores: { P: 0, J: +1 },
             },
             P: {
-                text: "*Turn around to see the other's reaction* Should I ask the driver what's going on?",
+                text: "Oi!",
                 scores: { P: +1, J: 0 },
             },
         },
     },
     {
-        question: "Q3/12: Before you can do anything, the bus stops and everything around you floats up!",
+        question: "Question 3.",
         image: "test_image.png",
         answers: {
             S: {
-                text: "Ok this is weird, am I dreaming? *pinch your arm*",
+                text: "Unna!",
                 scores: { S: +1, N: 0 },
             },
             N: {
-                text: "Is this a prank? Am I getting kidnapped by aliens?!",
+                text: "Oi!",
                 scores: { S: 0, N: +1 },
             },
         },
     },
     {
-        question: "Q4/12: Amidst the surprise, your eyes catch something drifting past the window.",
+        question: "Question 4.",
         image: "test_image.png",
         answers: {
             F: {
-                text: "Woahhh...so many cats! How cute!! I wanna give them a hug!",
+                text: "Unna!",
                 scores: { T: 0, F: +1 },
             },
             T: {
-                text: "Cats? In space? That's kinda odd... How do they survive out there?!",
+                text: "Oi!",
                 scores: { T: +1, F: 0 },
             },
         },
     },
     {
-        question: "Q5/12: 'Welcome Aboard!' a small robot appears and announces, 'We will reach our destination in 5 months 6 days and 2 hours!'",
+        question: "Question 5.",
         image: "test_image.png",
         answers: {
             P: {
-                text: "Cool! A space cruise?! Where are we going? Do I get a spacesuit? This is so exciting!",
+                text: "Unna!",
                 scores: { P: +1, J: 0 },
             },
             J: {
-                text: "Hey uh...Am I in space? How did I get here? When can I go home?! Why..",
+                text: "Oi!",
                 scores: { P: 0, J: +1 },
             },
         },
     },
     {
-        question: "Q6/12: The robot just points to the back of the bus which now looks more like inside of a spaceship! What do you want to see first?",
+        question: "Question 6.",
         image: "test_image.png",
         answers: {
             I: {
-                text: "Solar system themed fountain in the middle. I want to take pictures with it.",
+                text: "Unna!",
                 scores: { I: 0, E: +1 },
             },
             E: {
-                text: "Cozy corner with a massaging chair. I need to sit down and process.",
+                text: "Oi!",
                 scores: { I: +1, E: 0 },
             },
         },
     },
     {
-        question: "When you look up again, the inspector's already gone. You glance outside the window, darkness creeps in as the bus enters another tunnel...",
+        question: "Ending scene.",
         image: "test_image.png",
         answers: {
             K: {
-                text: "Wait...was that Bob?",
+                text: "No, Patrick, Mayonnaise is not an instrument. Horseradish is not an instrument either.",
             },
             U: {
-                text: "Oh no...Do I have to go through this again?",
+                text: "Are you feeling it now, Mr. Krabs?",
             },
         },
     },
@@ -206,12 +206,12 @@ function handleAnswer(event) {
     // remove this when done debugging
     // Display the scores for each letter
     
-    //const scoresContainer = document.querySelector('.scores-container');
-    //scoresContainer.innerHTML = `
-    //    <p>E Score: ${userAnswers['E'] || 0}, S Score: ${userAnswers['S'] || 0}, T Score: ${userAnswers['T'] || 0}, P Score: ${userAnswers['P'] || 0}</p>
-    //    <p>I Score: ${userAnswers['I'] || 0}, N Score: ${userAnswers['N'] || 0}, F Score: ${userAnswers['F'] || 0}, J Score: ${userAnswers['J'] || 0}</p>
-    //
-    //`;
+    const scoresContainer = document.querySelector('.scores-container');
+    scoresContainer.innerHTML = `
+        <p>E Score: ${userAnswers['E'] || 0}, S Score: ${userAnswers['S'] || 0}, T Score: ${userAnswers['T'] || 0}, P Score: ${userAnswers['P'] || 0}</p>
+        <p>I Score: ${userAnswers['I'] || 0}, N Score: ${userAnswers['N'] || 0}, F Score: ${userAnswers['F'] || 0}, J Score: ${userAnswers['J'] || 0}</p>
+    
+    `;
     // to here
 
     if (currentQuestion < questions.length - 1) {
