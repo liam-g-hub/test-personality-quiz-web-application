@@ -1,9 +1,7 @@
-// please do not use my source code without my permission, I put a lot of effort into it and please do let me know if you want to clone it, use it for your project, I begggg
-
 const questions = [
     {
         question: "Q1/12: You're taking the bus on your way back home. It's been a loooong day, what are you thinking about?",
-        image: "images/Q1.gif",
+        image: "images/test/test_image.png",
         answers: {
             F: {
                 text: "I'm just so tired and can't wait to go home. Why does everyday feel the same...",
@@ -17,7 +15,7 @@ const questions = [
     },
     {
         question: "Q2/12: You look outside the windows, seems like it's going to rain soon. Suddenly everything turns into darkness!!",
-        image: "images/Q2.gif",
+        image: "images/test/test_image.png",
         answers: {
             J: {
                 text: "I don't remember this tunnel. *Pull out your phone to look at the map*",
@@ -31,7 +29,7 @@ const questions = [
     },
     {
         question: "Q3/12: Before you can do anything, the bus stops and everything around you floats up!",
-        image: "images/Q3.gif",
+        image: "images/test/test_image.png",
         answers: {
             S: {
                 text: "Ok this is weird, am I dreaming? *pinch your arm*",
@@ -45,7 +43,7 @@ const questions = [
     },
     {
         question: "Q4/12: Amidst the surprise, your eyes catch something drifting past the window.",
-        image: "images/Q4.gif",
+        image: "images/test/test_image.png",
         answers: {
             F: {
                 text: "Woahhh...so many cats! How cute!! I wanna give them a hug!",
@@ -59,7 +57,7 @@ const questions = [
     },
     {
         question: "Q5/12: 'Welcome Aboard!' a small robot appears and announces, 'We will reach our destination in 5 months 6 days and 2 hours!'",
-        image: "images/Q5.gif",
+        image: "images/test/test_image.png",
         answers: {
             P: {
                 text: "Cool! A space cruise?! Where are we going? Do I get a spacesuit? This is so exciting!",
@@ -73,7 +71,7 @@ const questions = [
     },
     {
         question: "Q6/12: The robot just points to the back of the bus which now looks more like inside of a spaceship! What do you want to see first?",
-        image: "images/Q6.gif",
+        image: "images/test/test_image.png",
         answers: {
             I: {
                 text: "Solar system themed fountain in the middle. I want to take pictures with it.",
@@ -86,93 +84,8 @@ const questions = [
         },
     },
     {
-        question: "Q7/12: On the way back to your seat, you are surrounded by cats! 'Unauthorized passenger detected, CAPTURE CAPTURE!'",
-        image: "images/Q7.gif",
-        answers: {
-            S: {
-                text: "Woah! What do you mean unauthorized? I'm the passenger of this cruise!",
-                scores: { S: +1, N: 0 }
-            },
-            N: {
-                text: "Ok, I have no idea what's going on. How about we calm down and chat for a bit?",
-                scores: { S: 0, N: +1 },
-            },
-        },
-    },
-    {
-        question: "Q8/12: Suddenly, the robot glides in, it whispers something to the cats that makes them stop.",
-        image: "images/Q8.gif",
-        answers: {
-            E: {
-                text: "Bob!! Thank you! You come to save me, right?",
-                scores: { E: +1, I: 0 },
-            },
-            I: {
-                text: "HA! That's right! Back off, cats! Am I safe to go now?!",
-                scores: { E: 0, I: +1 },
-            },
-        },
-    },
-    {
-        question: "Q9/12: The robot transforms into a giant vacuum cleaner, the cats use it to point at you!",
-        image: "images/Q9.gif",
-        answers: {
-            J: {
-                text: "Throw your coat at them as distraction, run towards the big green 'EXIT' sign!",
-                scores: { J: +1, P: 0 },
-            },
-            P: {
-                text: "Run in random direction, confuse them, blend in with the crowd!",
-                scores: { J: 0, P: +1 },
-            },
-        },
-    },
-    {
-        question: "Q10/12: You run past the gift shop. Looks like you got rid of them. It wouldn't hurt to get some souvenirs, right?",
-        image: "images/Q10.gif",
-        answers: {
-            F: {
-                text: "Get the Jupiter headphone, wear it to hear people's thoughts!",
-                scores: { F: +1, T: 0 },
-            },
-            T: {
-                text: "Get the Mars watch, turn it and you can time travel!",
-                scores: { F: 0, T: +1 },
-            },
-        },
-
-    },
-    {
-        question: "Q11/12: The giant vacuum cleaner suddenly emerges in front of you! You're sucked into its vortex!!!",
-        image: "images/Q11.gif",
-        answers: {
-            S: {
-                text: "It's ok, this is just a dream! I'll wake up soon! *close your eyes and give up*",
-                scores: { S: +1, N: 0 },
-            },
-            N: {
-                text: "I'll find the way out! Maybe there are some secret doors! *look around for the way out*",
-                scores: { S: 0, N: +1 },
-            },
-        },
-    },
-    {
-        question: "Q12/12: After a moment of darkness, you find yourself back in the bus. 'Are you alright?' the ticket inspector asks",
-        image: "images/Q12.gif",
-        answers: {
-            I: {
-                text: "Woah! I thought I was captured... Nevermind! I'm alright now, I guess? *panic in silence*",
-                scores: { E: 0, I: +1 },
-            },
-            E: {
-                text: "You won't believe it...I think I just had the wildest dream ever! *tell him about your space adventure*",
-                scores: { E: +1, I: 0 },
-            },
-        },
-    },
-    {
         question: "When you look up again, the inspector's already gone. You glance outside the window, darkness creeps in as the bus enters another tunnel...",
-        image: "images/Q13.gif",
+        image: "images/test/test_image.png",
         answers: {
             K: {
                 text: "Wait...was that Bob?",
@@ -186,52 +99,52 @@ const questions = [
 
 const resultOptions = {
     "ISTJ": {
-        image: "1DE.png",
+        image: "images/test/test_image.png"
     },
     "ISFJ": {
-        image: "2light.png"
+        image: "images/test/test_image.png"
     },
     "INFJ": {
-        image: "3UFO.png"
+        image: "images/test/test_image.png"
     },
     "INTJ": {
-        image: "4nebula.png"
+        image: "images/test/test_image.png"
     },
     "ISTP": {
-        image: "5comet.png"
+        image: "images/test/test_image.png"
     },
     "ISFP": {
-        image: "6ST.png"
+        image: "images/test/test_image.png"
     },
     "INFP": {
-        image: "7DM.png"
+        image: "images/test/test_image.png"
     },
     "INTP": {
-        image: "8met.png"
+        image: "images/test/test_image.png"
     },
     "ESTP": {
-        image: "9BH.png"
+        image: "images/test/test_image.png"
     },
     "ESFP": {
-        image: "10Sn.png"
+        image: "images/test/test_image.png"
     },
     "ENFP": {
-        image: "11Grav.png"
+        image: "images/test/test_image.png"
     },
     "ENTP": {
-        image: "12hand.png"
+        image: "images/test/test_image.png"
     },
     "ESTJ": {
-        image: "13sat.png"
+        image: "images/test/test_image.png"
     },
     "ESFJ": {
-        image: "14sun.png"
+        image: "images/test/test_image.png"
     },
     "ENFJ": {
-        image: "15gal.png"
+        image: "images/test/test_image.png"
     },
     "ENTJ": {
-        image: "16rocket.png"
+        image: "images/test/test_image.png"
     },
 
 };
