@@ -253,8 +253,94 @@ const resultOptions = {
     },
 };
 
-let currentQuestion = 0;
+/// NEW //
 
+const traitNames = [
+  "Egg",      // 0
+  "Tea_Bag",  // 1
+  "Coffee",   // 2
+  "Soy_Sauce",// 3
+  "Rice",     // 4
+  "Bread",    // 5
+  "Cheese",   // 6
+  "Salt",     // 7
+  "Sugar",    // 8
+  "Milk"      // 9
+];
+
+let traitScores = new Array(traitNames.length).fill(0);
+
+const scoringMap = {
+  1: { // Q1
+    1: [0,1],   // Egg, Tea_Bag
+    2: [2,3],   // Coffee, Soy_Sauce
+    3: [4,5],   // Rice, Bread
+    4: [6,7],   // Cheese, Salt
+    5: [8,9]    // Sugar, Milk
+  },
+  2: { // Q2
+    1: [9,5],   // Milk, Bread
+    2: [4,0],   // Rice, Egg
+    3: [1,3],   // Tea_Bag, Soy_Sauce
+    4: [6,8],   // Cheese, Sugar
+    5: [2,7]    // Coffee, Salt
+  },
+  3: { // Q3
+    1: [3,0],   // Soy_Sauce, Egg
+    2: [2,5],   // Coffee, Bread
+    3: [9,1],   // Milk, Tea_Bag
+    4: [6,4],   // Cheese, Rice
+    5: [7,8]    // Salt, Sugar
+  },
+  4: { // Q4
+    1: [1,4],   // Tea_Bag, Rice
+    2: [2,9],   // Coffee, Milk
+    3: [5,0],   // Bread, Egg
+    4: [8,3],   // Sugar, Soy_Sauce
+    5: [6,7]    // Cheese, Salt
+  },
+  5: { // Q5
+    1: [8,9],   // Sugar, Milk
+    2: [1,7],   // Tea_Bag, Salt
+    3: [3,0],   // Soy_Sauce, Egg
+    4: [6,4],   // Cheese, Rice
+    5: [5,2]    // Bread, Coffee
+  },
+  6: { // Q6
+    1: [4,3],   // Rice, Soy_Sauce
+    2: [2,9],   // Coffee, Milk
+    3: [7,0],   // Salt, Egg
+    4: [6,5],   // Cheese, Bread
+    5: [8,1]    // Sugar, Tea_Bag
+  }
+};
+
+function getChoiceNumberFromKey(key) {
+  const m = key.match(/^A(\d+)_\d+$/);
+  if (m) return parseInt(m[1], 10);
+  return null;
+}
+
+function recordTraitAnswer(questionIndex1based, choiceNumber) {
+  if (!scoringMap[questionIndex1based]) return;
+  const arr = scoringMap[questionIndex1based][choiceNumber];
+  if (!arr) return;
+  arr.forEach(i => { traitScores[i] = (traitScores[i] || 0) + 1; });
+}
+
+function computeTopTraitWinners() {
+  const maxScore = Math.max(...traitScores);
+  const winners = [];
+  traitScores.forEach((s, idx) => {
+    if (s === maxScore) winners.push({ name: traitNames[idx], index: idx, score: s });
+  });
+  return { maxScore, winners };
+}
+
+/// NEW //
+
+let currentQuestion = 0;
+let userAnswers = {}; // keep this global so showResult/others can read it
 
 function displayQuestion() {
     const quizElement = document.getElementById('quiz');
@@ -274,7 +360,6 @@ function displayQuestion() {
     }
 }
 
-
 document.getElementById('start-button').addEventListener('click', function() {
     document.getElementById('start-page').style.display = 'none';
     document.getElementById('quiz-page').style.display = 'block';
@@ -284,7 +369,6 @@ document.getElementById('start-button').addEventListener('click', function() {
     // userAnswers.userName = userName;
 });
 
-
 //click
 function attachButtonClickHandlers() {
     const choiceButtons = document.querySelectorAll('.large-rectangular');
@@ -292,8 +376,6 @@ function attachButtonClickHandlers() {
         button.addEventListener('click', handleAnswer);
     });
 }
-
-
 
 //answers
 function handleAnswer(event) {
@@ -315,7 +397,6 @@ function handleAnswer(event) {
 }
 
 // ...
-
 
 function showResult() {
     const resultElement = document.getElementById('result');
@@ -344,8 +425,29 @@ function showResult() {
         resultImage.src = "images/"+personalityData.image;
         resultImage.alt = `${personalityData.image} Image`;
     } else {
-
+        // Blank
     }
+
+    /// NEW //
+
+    const traitResult = computeTopTraitWinners(); // { maxScore, winners }
+    let traitHtml = `<h2>Top trait${traitResult.winners.length > 1 ? 's' : ''} (MATLAB-style):</h2><ul>`;
+    traitResult.winners.forEach(w => {
+        const displayName = w.name.replace(/_/g, ' ');
+        // try lookup in resultOptions; some keys use spaces
+        const lookup = resultOptions[displayName] || resultOptions[w.name];
+        traitHtml += `<li><strong>${displayName}</strong> — ${w.score} point${w.score !== 1 ? 's' : ''}`;
+        if (lookup && lookup.image) {
+            traitHtml += `<br><img src="images/${lookup.image}" alt="${displayName}" style="max-width:200px;margin-top:6px;">`;
+        }
+        traitHtml += `</li>`;
+    });
+    traitHtml += `</ul>`;
+
+    /// NEW //
+
+    // append trait result under the existing result text
+    resultTextContainer.innerHTML += traitHtml;
 
     document.getElementById('quiz').style.display = 'none'; // Hide the quiz
     document.getElementById('result').style.display = 'block'; // Show the result
@@ -358,6 +460,11 @@ function showResult() {
 function restartQuiz() {
     currentQuestion = 0;
     userAnswers = {};
+
+    /// NEW //
+    traitScores = new Array(traitNames.length).fill(0);
+    /// NEW //
+
     document.getElementById('result').style.display = 'none';
     document.getElementById('quiz').style.display = 'block';
     displayQuestion(); // Start the quiz from the beginning
