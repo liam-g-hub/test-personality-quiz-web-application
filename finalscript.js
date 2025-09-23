@@ -7,6 +7,12 @@ const questions = [
                 text: "Unna!",
                 scores: { T: 0, F: +1 },
             },
+            
+            B: {
+                text: "Uwa!",
+                scores: { T: 0, F: +1 },
+            },
+
             T: {
                 text: "Oi!",
                 scores: { T: +1, F: 0 },
