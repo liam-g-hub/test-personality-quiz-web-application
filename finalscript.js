@@ -1,7 +1,7 @@
 const questions = [
     {
         question: "Q1/12: You're taking the bus on your way back home. It's been a loooong day, what are you thinking about?",
-        image: "images/test/test_image.png",
+        image: "test_image.png",
         answers: {
             F: {
                 text: "I'm just so tired and can't wait to go home. Why does everyday feel the same...",
@@ -15,7 +15,7 @@ const questions = [
     },
     {
         question: "Q2/12: You look outside the windows, seems like it's going to rain soon. Suddenly everything turns into darkness!!",
-        image: "images/test/test_image.png",
+        image: "test_image.png",
         answers: {
             J: {
                 text: "I don't remember this tunnel. *Pull out your phone to look at the map*",
@@ -29,7 +29,7 @@ const questions = [
     },
     {
         question: "Q3/12: Before you can do anything, the bus stops and everything around you floats up!",
-        image: "images/test/test_image.png",
+        image: "test_image.png",
         answers: {
             S: {
                 text: "Ok this is weird, am I dreaming? *pinch your arm*",
@@ -43,7 +43,7 @@ const questions = [
     },
     {
         question: "Q4/12: Amidst the surprise, your eyes catch something drifting past the window.",
-        image: "images/test/test_image.png",
+        image: "test_image.png",
         answers: {
             F: {
                 text: "Woahhh...so many cats! How cute!! I wanna give them a hug!",
@@ -57,7 +57,7 @@ const questions = [
     },
     {
         question: "Q5/12: 'Welcome Aboard!' a small robot appears and announces, 'We will reach our destination in 5 months 6 days and 2 hours!'",
-        image: "images/test/test_image.png",
+        image: "test_image.png",
         answers: {
             P: {
                 text: "Cool! A space cruise?! Where are we going? Do I get a spacesuit? This is so exciting!",
@@ -71,7 +71,7 @@ const questions = [
     },
     {
         question: "Q6/12: The robot just points to the back of the bus which now looks more like inside of a spaceship! What do you want to see first?",
-        image: "images/test/test_image.png",
+        image: "test_image.png",
         answers: {
             I: {
                 text: "Solar system themed fountain in the middle. I want to take pictures with it.",
@@ -85,7 +85,7 @@ const questions = [
     },
     {
         question: "When you look up again, the inspector's already gone. You glance outside the window, darkness creeps in as the bus enters another tunnel...",
-        image: "images/test/test_image.png",
+        image: "test_image.png",
         answers: {
             K: {
                 text: "Wait...was that Bob?",
@@ -99,52 +99,52 @@ const questions = [
 
 const resultOptions = {
     "ISTJ": {
-        image: "images/test/test_image.png"
+        image: "test_image.png"
     },
     "ISFJ": {
-        image: "images/test/test_image.png"
+        image: "test_image.png"
     },
     "INFJ": {
-        image: "images/test/test_image.png"
+        image: "test_image.png"
     },
     "INTJ": {
-        image: "images/test/test_image.png"
+        image: "test_image.png"
     },
     "ISTP": {
-        image: "images/test/test_image.png"
+        image: "test_image.png"
     },
     "ISFP": {
-        image: "images/test/test_image.png"
+        image: "test_image.png"
     },
     "INFP": {
-        image: "images/test/test_image.png"
+        image: "test_image.png"
     },
     "INTP": {
-        image: "images/test/test_image.png"
+        image: "test_image.png"
     },
     "ESTP": {
-        image: "images/test/test_image.png"
+        image: "test_image.png"
     },
     "ESFP": {
-        image: "images/test/test_image.png"
+        image: "test_image.png"
     },
     "ENFP": {
-        image: "images/test/test_image.png"
+        image: "test_image.png"
     },
     "ENTP": {
-        image: "images/test/test_image.png"
+        image: "test_image.png"
     },
     "ESTJ": {
-        image: "images/test/test_image.png"
+        image: "test_image.png"
     },
     "ESFJ": {
-        image: "images/test/test_image.png"
+        image: "test_image.png"
     },
     "ENFJ": {
-        image: "images/test/test_image.png"
+        image: "test_image.png"
     },
     "ENTJ": {
-        image: "images/test/test_image.png"
+        image: "test_image.png"
     },
 
 };
