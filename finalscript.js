@@ -1,5 +1,17 @@
+// Question and answer class structure
+// questions 
+// -> question = text string
+// -> image = image string
+// -> answers
+//    -> A1 = answer option 1
+//       -> text = text string
+//       -> scores = { dimension1: score, dimension2: score, ... }
+
+
 const questions = [
     {
+        // Question 1
+
         question: "You have to shop for groceries today! What are you wearing?",
         image: "test_image.png",
         answers: {
@@ -30,6 +42,8 @@ const questions = [
         },
     },
     {
+        // Question 2
+
         question: "What's your mood today?",
         image: "test_image.png",
         answers: {
@@ -61,6 +75,8 @@ const questions = [
         },
     },
     {
+        // Question 3
+
         question: "What's your shopping cart vibe?",
         image: "test_image.png",
         answers: {
@@ -91,6 +107,8 @@ const questions = [
         },
     },
     {
+        // Question 4
+
         question: "It's time to shop! Where do you wanna go",
         image: "test_image.png",
         answers: {
@@ -121,6 +139,8 @@ const questions = [
         },
     },
     {
+        // Question 5
+
         question: "Put your headphones on. What are you listening?",
         image: "test_image.png",
         answers: {
@@ -152,6 +172,8 @@ const questions = [
         },
     },
     {
+        // Question 6
+
         question: "It's time to check out! What's your call?",
         image: "test_image.png",
         answers: {
@@ -183,6 +205,8 @@ const questions = [
         },
     },
     {
+        // Ending Question 
+
         question: "Ending scene.",
         image: "test_image.png",
         answers: {
@@ -197,59 +221,39 @@ const questions = [
 ];
 
 const resultOptions = {
-    "ISTJ": {
-        image: "test_image.png"
+    "Egg": {
+        image: "Egg.png"
     },
-    "ISFJ": {
-        image: "test_image.png"
+    "Coffee": {
+        image: "Coffee.png"
     },
-    "INFJ": {
-        image: "test_image.png"
+    "Bread": {
+        image: "Bread.png"
     },
-    "INTJ": {
-        image: "test_image.png"
+    "Tea Bag": {
+        image: "Tea_Bag.png"
     },
-    "ISTP": {
-        image: "test_image.png"
+    "Rice": {
+        image: "Rice.png"
     },
-    "ISFP": {
-        image: "test_image.png"
+    "Sugar": {
+        image: "Sugar.png"
     },
-    "INFP": {
-        image: "test_image.png"
+    "Milk": {
+        image: "Milk.png"
     },
-    "INTP": {
-        image: "test_image.png"
+    "Salt": {
+        image: "Salt.png"
     },
-    "ESTP": {
-        image: "test_image.png"
+    "Cheese": {
+        image: "Cheese.png"
     },
-    "ESFP": {
-        image: "test_image.png"
+    "Soy Sauce": { 
+        image: "Soy_Sauce.png"
     },
-    "ENFP": {
-        image: "test_image.png"
-    },
-    "ENTP": {
-        image: "test_image.png"
-    },
-    "ESTJ": {
-        image: "test_image.png"
-    },
-    "ESFJ": {
-        image: "test_image.png"
-    },
-    "ENFJ": {
-        image: "test_image.png"
-    },
-    "ENTJ": {
-        image: "test_image.png"
-    },
-
 };
 
 let currentQuestion = 0;
-// let userAnswers = {};
 
 
 function displayQuestion() {
