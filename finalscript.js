@@ -197,7 +197,7 @@ const questions = [
 
             A5_6: {
                 text: "Daydreaming",
-                scores: { Suagr: +1, Tea_Bag: +1 }, // note: 'Suagr' typo preserved (handled in mapping)
+                scores: { Sugar: +1, Tea_Bag: +1 }, // note: 'Suagr' typo preserved (handled in mapping)
             },
 
         },
@@ -463,15 +463,41 @@ function restartQuiz() {
 }
 
 // Main starters
-document.getElementById('start-button').addEventListener('click', function() {
-    document.getElementById('start-page').style.display = 'none';
-    document.getElementById('quiz-page').style.display = 'block';
-    currentQuestion = 0;
-    userAnswers = {};
-    displayQuestion(); 
-});
+function attachMainListeners(){
+  const startBtn = document.getElementById('start-button');
+  const restartBtn = document.getElementById('restart-button');
 
+  if (startBtn) {
+    startBtn.addEventListener('click', function() {
+      const sp = document.getElementById('start-page');
+      const qp = document.getElementById('quiz-page');
+      if (sp) sp.style.display = 'none';
+      if (qp) qp.style.display = 'block';
+      currentQuestion = 0;
+      userAnswers = {};
+      displayQuestion();
+    });
+  } else {
+    console.warn('finalscript.js: start-button not found — quiz will try to auto-start.');
+  }
 
-document.getElementById('restart-button').addEventListener('click', restartQuiz);
+  if (restartBtn) {
+    restartBtn.addEventListener('click', restartQuiz);
+  } else {
+    console.warn('finalscript.js: restart-button not found (restart may be unavailable).');
+  }
 
-displayQuestion();
+  // If there's no start button, assume we should start the quiz automatically.
+  if (!startBtn) {
+    // small timeout to ensure other initialization finished
+    setTimeout(() => {
+      try { displayQuestion(); } catch (e) { /* ignore */ }
+    }, 0);
+  }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', attachMainListeners);
+} else {
+  attachMainListeners();
+}
