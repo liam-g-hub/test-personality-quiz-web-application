@@ -488,12 +488,14 @@ function showResult() {
             resultTextContainer = document.createElement('div');
             resultTextContainer.className = 'result-text';
             resultElement.appendChild(resultTextContainer);
+            showResultControls();
         }
         if (!resultImage) {
             resultImage = document.createElement('img');
             resultImage.id = 'result-image';
             resultImage.alt = 'result image';
             resultElement.appendChild(resultImage);
+            showResultControls();
         }
     }
 
