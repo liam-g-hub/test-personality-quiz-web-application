@@ -197,7 +197,7 @@ const questions = [
 
             A5_6: {
                 text: "Daydreaming",
-                scores: { Sugar: +1, Tea_Bag: +1 }, // note: 'Suagr' typo preserved (handled in mapping)
+                scores: { Sugar: +1, Tea_Bag: +1 },
             },
 
         },
@@ -220,34 +220,54 @@ const questions = [
 
 const resultOptions = {
     "Egg": {
-        image: "Egg.gif"
+        image: "Egg.gif",
+        title: "Egg",
+        description: "well-rounded, loves company"
     },
     "Coffee": {
-        image: "Coffee.gif"
+        image: "Coffee.gif",
+        title: "Coffee",
+        description: "workaholic, realist"
     },
     "Bread": {
-        image: "Bread.gif"
+        image: "Bread.gif",
+        title: "Bread",
+        description: "warm and dependable, can get along with others easily"
     },
     "Tea Bag": {
-        image: "Tea_Bag.gif"
+        image: "Tea_Bag.gif",
+        title: "Tea Bag",
+        description: "the friend who gives advice"
     },
     "Rice": {
-        image: "Rice.gif"
+        image: "Rice.gif",
+        title: "Rice",
+        description: "the MVP, the one who carries everyone"
     },
     "Sugar": {
-        image: "Sugar.gif"
+        image: "Sugar.gif",
+        title: "Sugar",
+        description: "hopeless romantic"
     },
     "Milk": {
-        image: "Milk.gif"
+        image: "Milk.gif",
+        title: "Milk",
+        description: "the parental figure of the group"
     },
     "Salt": {
-        image: "Salt.gif"
+        image: "Salt.gif",
+        title: "Salt",
+        description: "sassy, down-to-earth"
     },
     "Cheese": {
-        image: "Cheese.gif"
+        image: "Cheese.gif",
+        title: "Cheese",
+        description: "loves telling corny jokes"
     },
     "Soy Sauce": { 
-        image: "Soy_Sauce.gif"
+        image: "Soy_Sauce.gif",
+        title: "Soy Sauce",
+        description: "sociable and fixer-upper"
     },
 };
 
@@ -291,7 +311,6 @@ function handleAnswer(event) {
     const question = questions[currentQuestion];
     const answer = question.answers[answerKey];
 
-    /* --- MODIFIED: defensive scoring increment logic --- */
     // If the answer has a scores object, increment; otherwise ignore (e.g., ending scene)
     if (answer && answer.scores && typeof answer.scores === 'object') {
         for (const dimension in answer.scores) {
@@ -303,7 +322,7 @@ function handleAnswer(event) {
         // no scores to apply (ending / informational answers)
         // Do nothing — preserves original behavior
     }
-    /* --- END MODIFIED --- */
+    
 
     if (currentQuestion < questions.length - 1) {
         currentQuestion++;
@@ -313,7 +332,6 @@ function handleAnswer(event) {
     }
 }
 
-/* --- MODIFIED: new showResult implementation (top-trait & image mapping) --- */
 function normalizeKey(k) {
     if (!k) return '';
     // lowercase, remove non-word characters (space, underscores, punctuation)
@@ -342,7 +360,6 @@ function showResult() {
     let resultTextContainer = document.querySelector('.result-text');
     let resultImage = document.getElementById('result-image');
 
-    // Build normalized mapping so we can match 'Tea_Bag' -> 'Tea Bag', 'Suagr' -> 'Sugar' (best-effort)
     const normMap = buildNormalizedResultMap(resultOptions);
 
     // If there are no recorded scores (user skipped scoring questions), gracefully handle
@@ -361,7 +378,7 @@ function showResult() {
         return;
     }
 
-    // Find top trait(s)
+    // Find top traits
     let maxScore = -Infinity;
     const topTraits = [];
     for (const trait in userAnswers) {
@@ -387,23 +404,17 @@ function showResult() {
         const nk = normalizeKey(winnerTrait);
         if (normMap[nk]) personalityData = normMap[nk].data;
         else {
-            // attempt best-effort fuzzy corrections: handle common swapped underscore/space variants
-            // try winnerTrait with underscore -> space and vice versa
+            
             const alt1 = String(winnerTrait).replace(/_/g, ' ');
             const alt2 = String(winnerTrait).replace(/\s+/g, '_');
             if (resultOptions[alt1]) personalityData = resultOptions[alt1];
             else if (resultOptions[alt2]) personalityData = resultOptions[alt2];
-            else {
-                // fallback: try close normalized matches (e.g., 'suagr' -> 'sugar')
-                // Take first normalized resultOption whose normalized key has small edit distance? -> too heavy
-                // For simplicity, try explicit common fixes:
-                if (nk === 'suagr' && normMap['sugar']) personalityData = normMap['sugar'].data;
-            }
         }
     }
 
     // Prepare and show result content
     // Ensure resultTextContainer and resultImage exist; if not, create them inside #result
+
     if (!resultElement) {
         console.warn('showResult: #result element not found in DOM.');
     } else {
@@ -435,19 +446,66 @@ function showResult() {
 
     if (personalityData) {
         displayImagePath = 'images/Roster/' + personalityData.image;
-        // optional: if resultOptions contains more metadata later, use it
+        
     }
 
-    // Insert into DOM
-    if (resultTextContainer) {
-        resultTextContainer.innerHTML = `<h2>${escapeHtml(displayTitle)}</h2>
-            <p>${escapeHtml(displayDesc)}</p>`;
-        resultTextContainer.innerHTML += traitHtml;
+    if (!resultElement) {
+  console.warn('showResult: #result element not found in DOM.');
+  return;
+}
+
+// Create/reuse result sub-elements
+    let titleEl = document.getElementById('result-title');
+    let descEl  = document.getElementById('result-desc');
+    let imgEl   = document.getElementById('result-image');
+
+    // Ensure a result text container exists
+    if (!resultTextContainer) {
+        resultTextContainer = document.createElement('div');
+        resultTextContainer.className = 'result-text';
+        resultElement.appendChild(resultTextContainer);
     }
-    if (resultImage) {
-        resultImage.src = displayImagePath;
-        resultImage.alt = `${winnerTrait} Image`;
+
+    // Create title/desc/image if missing
+    if (!titleEl) {
+        titleEl = document.createElement('h2');
+        titleEl.id = 'result-title';
+        resultTextContainer.appendChild(titleEl);
     }
+    if (!descEl) {
+        descEl = document.createElement('p');
+        descEl.id = 'result-desc';
+        resultTextContainer.appendChild(descEl);
+    }
+    if (!imgEl) {
+        imgEl = document.createElement('img');
+        imgEl.id = 'result-image';
+        imgEl.alt = 'result image';
+        // place image before the text block
+        resultElement.insertBefore(imgEl, resultTextContainer);
+    }
+
+    // Fill content (use textContent to avoid HTML injection)
+    titleEl.textContent = (personalityData && (personalityData.title || personalityData.name)) || displayTitle || `Top trait: ${winnerTrait}`;
+    descEl.textContent  = (personalityData && (personalityData.description || personalityData.desc)) || displayDesc || '';
+    imgEl.src = displayImagePath || (personalityData && (personalityData.image ? ('images/' + personalityData.image) : null)) || 'images/placeholder.png';
+    imgEl.alt = (personalityData && personalityData.title) ? personalityData.title : winnerTrait || 'result image';
+
+    // Build a clean trait-score breakdown (DOM-based)
+    let breakdown = document.getElementById('result-trait-breakdown');
+    if (breakdown) breakdown.remove(); // remove old one if present
+    breakdown = document.createElement('div');
+    breakdown.id = 'result-trait-breakdown';
+    const ul = document.createElement('ul');
+
+    const sortedTraits = Object.keys(userAnswers || {}).sort();
+    for (const t of sortedTraits) {
+    const li = document.createElement('li');
+    li.textContent = `${t}: ${userAnswers[t] || 0}`;
+    ul.appendChild(li);
+    }
+    breakdown.appendChild(ul);
+    resultTextContainer.appendChild(breakdown);
 
     // Show/hide UI
     const quizEl = document.getElementById('quiz');
@@ -456,7 +514,6 @@ function showResult() {
     const restartBtn = document.getElementById('restart-button');
     if (restartBtn) restartBtn.style.display = 'block'; // Show the restart button
 }
-/* --- END MODIFIED --- */
 
 //Function to restart the quiz
 function restartQuiz() {
@@ -470,40 +527,41 @@ function restartQuiz() {
 
 // Main starters
 function attachMainListeners(){
-  const startBtn = document.getElementById('start-button');
-  const restartBtn = document.getElementById('restart-button');
+    const startBtn = document.getElementById('start-button');
+    const restartBtn = document.getElementById('restart-button');
 
-  if (startBtn) {
-    startBtn.addEventListener('click', function() {
-      const sp = document.getElementById('start-page');
-      const qp = document.getElementById('quiz-page');
-      if (sp) sp.style.display = 'none';
-      if (qp) qp.style.display = 'block';
-      currentQuestion = 0;
-      userAnswers = {};
-      displayQuestion();
+    if (startBtn) {
+        startBtn.addEventListener('click', function() {
+        const sp = document.getElementById('start-page');
+        const qp = document.getElementById('quiz-page');
+        if (sp) sp.style.display = 'none';
+        if (qp) qp.style.display = 'block';
+        currentQuestion = 0;
+        userAnswers = {};
+        displayQuestion();
     });
-  } else {
-    console.warn('finalscript.js: start-button not found — quiz will try to auto-start.');
-  }
+    } else {
+        console.warn('finalscript.js: start-button not found — quiz will try to auto-start.');
+    }
 
-  if (restartBtn) {
-    restartBtn.addEventListener('click', restartQuiz);
-  } else {
-    console.warn('finalscript.js: restart-button not found (restart may be unavailable).');
-  }
+    if (restartBtn) {
+        restartBtn.addEventListener('click', restartQuiz);
+    } else {
+        console.warn('finalscript.js: restart-button not found (restart may be unavailable).');
+    }
 
-  // If there's no start button, assume we should start the quiz automatically.
-  if (!startBtn) {
+    // If there's no start button, assume we should start the quiz automatically.
+    if (!startBtn) {
+
     // small timeout to ensure other initialization finished
-    setTimeout(() => {
-      try { displayQuestion(); } catch (e) { /* ignore */ }
-    }, 0);
-  }
+        setTimeout(() => {
+            try { displayQuestion(); } catch (e) { /* ignore */ }
+        }, 0);
+    }
 }
 
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', attachMainListeners);
+    document.addEventListener('DOMContentLoaded', attachMainListeners);
 } else {
-  attachMainListeners();
+    attachMainListeners();
 }
