@@ -220,34 +220,34 @@ const questions = [
 
 const resultOptions = {
     "Egg": {
-        image: "images/Roster/Egg.gif"
+        image: "Egg.gif"
     },
     "Coffee": {
-        image: "images/Roster/Coffee.gif"
+        image: "Coffee.gif"
     },
     "Bread": {
-        image: "images/Roster/Bread.gif"
+        image: "Bread.gif"
     },
     "Tea Bag": {
-        image: "images/Roster/Tea_Bag.gif"
+        image: "Tea_Bag.gif"
     },
     "Rice": {
-        image: "images/Roster/Rice.gif"
+        image: "Rice.gif"
     },
     "Sugar": {
-        image: "images/Roster/Sugar.gif"
+        image: "Sugar.gif"
     },
     "Milk": {
-        image: "images/Roster/Milk.gif"
+        image: "Milk.gif"
     },
     "Salt": {
-        image: "images/Roster/Salt.gif"
+        image: "Salt.gif"
     },
     "Cheese": {
-        image: "images/Roster/Cheese.gif"
+        image: "Cheese.gif"
     },
     "Soy Sauce": { 
-        image: "images/Roster/Soy_Sauce.gif"
+        image: "Soy_Sauce.gif"
     },
 };
 
