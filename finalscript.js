@@ -328,6 +328,15 @@ function buildNormalizedResultMap(resultOptionsObj) {
     return norm;
 }
 
+function escapeHtml(str) {
+  return String(str === undefined || str === null ? '' : str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 function showResult() {
     const resultElement = document.getElementById('result');
     let resultTextContainer = document.querySelector('.result-text');
