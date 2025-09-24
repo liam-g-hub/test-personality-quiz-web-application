@@ -140,7 +140,7 @@ const questions = [
         // Question 5
 
         question: "Put your headphones on. What are you listening?",
-        image: "images/Q5/Q5_BG.png",
+        image: "images/Q5/Q5_BG.PNG",
         answers: {
             A1_5: {
                 text: "Chill lo-fi playlists or relaxing music",
@@ -220,34 +220,34 @@ const questions = [
 
 const resultOptions = {
     "Egg": {
-        image: "Egg.gif"
+        image: "images/Roster/Egg.gif"
     },
     "Coffee": {
-        image: "Coffee.gif"
+        image: "images/Roster/Coffee.gif"
     },
     "Bread": {
-        image: "Bread.gif"
+        image: "images/Roster/Bread.gif"
     },
     "Tea Bag": {
-        image: "Tea_Bag.gif"
+        image: "images/Roster/Tea_Bag.gif"
     },
     "Rice": {
-        image: "Rice.gif"
+        image: "images/Roster/Rice.gif"
     },
     "Sugar": {
-        image: "Sugar.gif"
+        image: "images/Roster/Sugar.gif"
     },
     "Milk": {
-        image: "Milk.gif"
+        image: "images/Roster/Milk.gif"
     },
     "Salt": {
-        image: "Salt.gif"
+        image: "images/Roster/Salt.gif"
     },
     "Cheese": {
-        image: "Cheese.gif"
+        image: "images/Roster/Cheese.gif"
     },
     "Soy Sauce": { 
-        image: "Soy_Sauce.gif"
+        image: "images/Roster/Soy_Sauce.gif"
     },
 };
 
