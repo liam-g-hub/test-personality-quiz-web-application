@@ -1,11 +1,13 @@
-/* finalscript.js  (modified scoring & result logic only)
-   Based on your uploaded finalscript(old).js — minimal invasive edits:
-   - keeps existing questions array, UI flow, and event wiring
-   - changes scoring/result computation to pick highest trait and show mapped image
-   - normalizes trait keys when looking up images (handles underscores/spaces/typos)
-*/
-
 const questions = [
+
+    // Question and answer class structure
+    // questions 
+    // -> question = text string
+    // -> image = image string
+    // -> answers
+    //    -> A1 = answer option 1
+    //       -> text = text string
+    //       -> scores = { dimension1: score, dimension2: score, ... }
 
     {
         // Question 1
@@ -197,7 +199,7 @@ const questions = [
 
             A5_6: {
                 text: "Daydreaming",
-                scores: { Suagr: +1, Tea_Bag: +1 }, // note: 'Suagr' typo preserved (handled in mapping)
+                scores: { Suagr: +1, Tea_Bag: +1 },
             },
 
         },
@@ -277,10 +279,7 @@ function displayQuestion() {
 function attachButtonClickHandlers() {
     const choiceButtons = document.querySelectorAll('.large-rectangular');
     choiceButtons.forEach((button) => {
-        // remove old handlers to avoid duplicates (safe-guard)
-        const newButton = button.cloneNode(true);
-        button.parentNode.replaceChild(newButton, button);
-        newButton.addEventListener('click', handleAnswer);
+        button.addEventListener('click', handleAnswer);
     });
 }
 
@@ -291,19 +290,9 @@ function handleAnswer(event) {
     const question = questions[currentQuestion];
     const answer = question.answers[answerKey];
 
-    /* --- MODIFIED: defensive scoring increment logic --- */
-    // If the answer has a scores object, increment; otherwise ignore (e.g., ending scene)
-    if (answer && answer.scores && typeof answer.scores === 'object') {
-        for (const dimension in answer.scores) {
-            // ensure numeric increment (in case the value is +1)
-            const inc = Number(answer.scores[dimension]) || (answer.scores[dimension] === +1 ? 1 : 0);
-            userAnswers[dimension] = (userAnswers[dimension] || 0) + inc;
-        }
-    } else {
-        // no scores to apply (ending / informational answers)
-        // Do nothing — preserves original behavior
+    for (const dimension in answer.scores) {
+        userAnswers[dimension] = (userAnswers[dimension] || 0) + answer.scores[dimension];
     }
-    /* --- END MODIFIED --- */
 
     if (currentQuestion < questions.length - 1) {
         currentQuestion++;
@@ -313,143 +302,44 @@ function handleAnswer(event) {
     }
 }
 
-/* --- MODIFIED: new showResult implementation (top-trait & image mapping) --- */
-function normalizeKey(k) {
-    if (!k) return '';
-    // lowercase, remove non-word characters (space, underscores, punctuation)
-    return String(k).toLowerCase().replace(/[^a-z0-9]/g, '');
-}
-
-function buildNormalizedResultMap(resultOptionsObj) {
-    const norm = {};
-    for (const key in resultOptionsObj) {
-        norm[normalizeKey(key)] = { origKey: key, data: resultOptionsObj[key] };
-    }
-    return norm;
-}
-
+// Function to show results
 function showResult() {
     const resultElement = document.getElementById('result');
-    let resultTextContainer = document.querySelector('.result-text');
-    let resultImage = document.getElementById('result-image');
+    const resultTextContainer = document.querySelector('.result-text');
+    const resultImage = document.getElementById('result-image');
+    const topLetters = {};
 
-    // Build normalized mapping so we can match 'Tea_Bag' -> 'Tea Bag', 'Suagr' -> 'Sugar' (best-effort)
-    const normMap = buildNormalizedResultMap(resultOptions);
+    const pairs = ["IE", "NS", "TF", "PJ"];
+    pairs.forEach(pair => {
+        const options = pair.split('');
+        const scores = options.map(option => userAnswers[option] || 0);
+        const topOptionIndex = scores.indexOf(Math.max(...scores));
+        const topOption = options[topOptionIndex];
+        topLetters[pair] = topOption;
+    });
 
-    // If there are no recorded scores (user skipped scoring questions), gracefully handle
-    if (!userAnswers || Object.keys(userAnswers).length === 0) {
-        // show a fallback message
-        if (resultTextContainer) {
-            resultTextContainer.innerHTML = `<p>No trait data collected. Try answering the quiz questions.</p>`;
-        }
-        if (resultImage) {
-            resultImage.src = 'images/placeholder.png';
-            resultImage.alt = 'Placeholder';
-        }
-        document.getElementById('quiz').style.display = 'none';
-        if (resultElement) resultElement.style.display = 'block';
-        document.getElementById('restart-button').style.display = 'block';
-        return;
-    }
+    //each pair
+    const result = pairs.map(pair => topLetters[pair]).join('');
 
-    // Find top trait(s)
-    let maxScore = -Infinity;
-    const topTraits = [];
-    for (const trait in userAnswers) {
-        const v = Number(userAnswers[trait]) || 0;
-        if (v > maxScore) {
-            maxScore = v;
-            topTraits.length = 0;
-            topTraits.push(trait);
-        } else if (v === maxScore) {
-            topTraits.push(trait);
-        }
-    }
-
-    // Tie handling (deterministic): choose first alphabetically of topTraits (you can change this logic)
-    topTraits.sort();
-    const winnerTrait = topTraits[0];
-
-    // Try direct lookup in resultOptions first
-    let personalityData = resultOptions[winnerTrait];
-
-    // If not found, try normalized lookup (handles underscores/spaces/typos like 'Suagr' -> normalize)
-    if (!personalityData) {
-        const nk = normalizeKey(winnerTrait);
-        if (normMap[nk]) personalityData = normMap[nk].data;
-        else {
-            // attempt best-effort fuzzy corrections: handle common swapped underscore/space variants
-            // try winnerTrait with underscore -> space and vice versa
-            const alt1 = String(winnerTrait).replace(/_/g, ' ');
-            const alt2 = String(winnerTrait).replace(/\s+/g, '_');
-            if (resultOptions[alt1]) personalityData = resultOptions[alt1];
-            else if (resultOptions[alt2]) personalityData = resultOptions[alt2];
-            else {
-                // fallback: try close normalized matches (e.g., 'suagr' -> 'sugar')
-                // Take first normalized resultOption whose normalized key has small edit distance? -> too heavy
-                // For simplicity, try explicit common fixes:
-                if (nk === 'suagr' && normMap['sugar']) personalityData = normMap['sugar'].data;
-            }
-        }
-    }
-
-    // Prepare and show result content
-    // Ensure resultTextContainer and resultImage exist; if not, create them inside #result
-    if (!resultElement) {
-        console.warn('showResult: #result element not found in DOM.');
-    } else {
-        if (!resultTextContainer) {
-            resultTextContainer = document.createElement('div');
-            resultTextContainer.className = 'result-text';
-            resultElement.appendChild(resultTextContainer);
-        }
-        if (!resultImage) {
-            resultImage = document.createElement('img');
-            resultImage.id = 'result-image';
-            resultImage.alt = 'result image';
-            resultElement.appendChild(resultImage);
-        }
-    }
-
-    // Build trait breakdown HTML
-    let traitHtml = '<h3>Your trait scores</h3><ul>';
-    const allTraits = Object.keys(userAnswers).sort();
-    for (const t of allTraits) {
-        traitHtml += `<li>${t}: ${userAnswers[t] || 0}</li>`;
-    }
-    traitHtml += '</ul>';
-
-    // Compose displayed top-trait info
-    let displayTitle = `Top trait: ${winnerTrait} (${maxScore})`;
-    let displayDesc = '';
-    let displayImagePath = 'images/placeholder.png';
-
+    //show result
+    const personalityData = resultOptions[result];
     if (personalityData) {
-        displayImagePath = 'images/' + personalityData.image;
-        // optional: if resultOptions contains more metadata later, use it
-        if (personalityData.title) displayTitle = personalityData.title;
-        if (personalityData.desc) displayDesc = personalityData.desc;
+        resultTextContainer.innerHTML = `
+        `;
+
+        resultImage.src = "images/"+personalityData.image;
+        resultImage.alt = `${personalityData.image} Image`;
+    } else {
+        // Blank
     }
 
-    // Insert into DOM
-    if (resultTextContainer) {
-        resultTextContainer.innerHTML = `<h2>${escapeHtml(displayTitle)}</h2>
-            <p>${escapeHtml(displayDesc)}</p>`;
-        resultTextContainer.innerHTML += traitHtml;
-    }
-    if (resultImage) {
-        resultImage.src = displayImagePath;
-        resultImage.alt = `${winnerTrait} Image`;
-    }
+    // append trait result under the existing result text
+    resultTextContainer.innerHTML += traitHtml;
 
-    // Show/hide UI
-    const quizEl = document.getElementById('quiz');
-    if (quizEl) quizEl.style.display = 'none'; // Hide the quiz
-    if (resultElement) resultElement.style.display = 'block'; // Show the result
-    const restartBtn = document.getElementById('restart-button');
-    if (restartBtn) restartBtn.style.display = 'block'; // Show the restart button
+    document.getElementById('quiz').style.display = 'none'; // Hide the quiz
+    document.getElementById('result').style.display = 'block'; // Show the result
+    document.getElementById('restart-button').style.display = 'block'; // Show the restart button
 }
-/* --- END MODIFIED --- */
 
 //Function to restart the quiz
 function restartQuiz() {
@@ -475,3 +365,5 @@ document.getElementById('start-button').addEventListener('click', function() {
 document.getElementById('restart-button').addEventListener('click', restartQuiz);
 
 displayQuestion();
+
+
