@@ -173,7 +173,7 @@ const questions = [
         // Question 6
 
         question: "It's time to check out! What's your call?",
-        image: "images/Q6/Q6_BG.png",
+        image: "images/Q6/Q6_BG.PNG",
         answers: {
             A1_6: {
                 text: "Organizing your items while patiently waiting",
