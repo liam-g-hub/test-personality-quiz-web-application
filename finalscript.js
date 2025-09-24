@@ -434,10 +434,8 @@ function showResult() {
     let displayImagePath = 'images/placeholder.png';
 
     if (personalityData) {
-        displayImagePath = 'images/' + personalityData.image;
+        displayImagePath = 'images/Roster' + personalityData.image;
         // optional: if resultOptions contains more metadata later, use it
-        if (personalityData.title) displayTitle = personalityData.title;
-        if (personalityData.desc) displayDesc = personalityData.desc;
     }
 
     // Insert into DOM
@@ -464,7 +462,6 @@ function showResult() {
 function restartQuiz() {
     currentQuestion = 0;
     userAnswers = {};
-
 
     document.getElementById('result').style.display = 'none';
     document.getElementById('quiz').style.display = 'block';
