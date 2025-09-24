@@ -362,6 +362,41 @@ function handleAnswer(event) {
     }
 }
 
+/* ---------- Result controls show/hide helpers ---------- */
+/* Hides the anchor wrapping each .do-not-press-button by default and toggles
+   them visible only when the result is displayed. Works without editing index.html. */
+
+function _getResultControlAnchors() {
+  // find each button and prefer hiding its closest anchor (<a>) so there's no blank space
+  const btns = Array.from(document.querySelectorAll('.do-not-press-button'));
+  return btns.map(b => b.closest('a') || b).filter(Boolean);
+}
+
+function hideResultControls() {
+  const els = _getResultControlAnchors();
+  els.forEach(el => {
+    // preserve previous inline display value if needed by storing it
+    if (!el.hasAttribute('data-old-display')) {
+      el.setAttribute('data-old-display', el.style.display || '');
+    }
+    el.style.display = 'none';
+  });
+}
+
+function showResultControls() {
+  const els = _getResultControlAnchors();
+  els.forEach(el => {
+    const old = el.getAttribute('data-old-display');
+    // restore previous display if present, otherwise use inline-block for anchors (or default '')
+    if (old && old !== 'null') el.style.display = old;
+    else {
+      // if this is an anchor (<a>) show inline-block so button fits; else clear inline style
+      el.style.display = (el.tagName && el.tagName.toLowerCase() === 'a') ? 'inline-block' : '';
+    }
+  });
+}
+
+
 function normalizeKey(k) {
     if (!k) return '';
     // lowercase, remove non-word characters (space, underscores, punctuation)
@@ -405,6 +440,7 @@ function showResult() {
         document.getElementById('quiz').style.display = 'none';
         if (resultElement) resultElement.style.display = 'block';
         document.getElementById('restart-button').style.display = 'block';
+        showResultControls();
         return;
     }
 
@@ -569,6 +605,7 @@ function attachMainListeners(){
         currentQuestion = 0;
         userAnswers = {};
         displayQuestion();
+        hideResultControls();
     });
     } else {
         console.warn('finalscript.js: start-button not found — quiz will try to auto-start.');
@@ -576,6 +613,7 @@ function attachMainListeners(){
 
     if (restartBtn) {
         restartBtn.addEventListener('click', restartQuiz);
+        hideResultControls();
     } else {
         console.warn('finalscript.js: restart-button not found (restart may be unavailable).');
     }
@@ -589,6 +627,8 @@ function attachMainListeners(){
         }, 0);
     }
 }
+
+
 
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', attachMainListeners);
