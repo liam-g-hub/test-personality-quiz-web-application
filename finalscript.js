@@ -308,18 +308,53 @@ let userAnswers = {}; // keep this global so showResult/others can read it
 function displayQuestion() {
     const quizElement = document.getElementById('quiz');
     const question = questions[currentQuestion];
+    if (!quizElement) return;
+
     if (question) {
-        let html = `<p>${question.question}</p>`;
+        // Start markup: question text and optional question-level image
+        let html = `<div class="question-block">`;
+        html += `<p class="question-text">${escapeHtml(question.question)}</p>`;
+
+        // optional big question image (keeps your existing behavior)
         if (question.image) {
-            html += `<img src="${question.image}" alt="Question ${currentQuestion + 1}">`;
+            // put question-level image above answers (small preview)
+            html += `<div class="question-main-image-wrap" style="text-align:center;margin-bottom:10px;">
+                        <img src="${escapeHtml(question.image)}" alt="Question ${currentQuestion + 1}" style="max-width:100%;height:auto;border-radius:6px;" />
+                     </div>`;
         }
+
+        // Answers area: create a flexible grid that holds image above each button
+        html += `<div class="answers-grid" style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">`;
+
+        // For each option, create a small wrapper with an image (if provided) above the button
         for (const option in question.answers) {
-            html += `<button class="large-rectangular" value="${option}" id="${option}">${question.answers[option].text}</button>`;
+            const opt = question.answers[option];
+            const optImage = opt && opt.image ? opt.image : null;
+
+            // wrapper width — adjust as necessary (uses responsive calc to try to fit 2-3 per row)
+            // You can override in CSS later; inline style avoids needing HTML edits
+            html += `<div class="answer-wrapper" style="width:calc(50% - 12px); max-width:220px; text-align:center;">`;
+
+            if (optImage) {
+                html += `<div class="answer-thumb" style="margin:0 0 6px 0;">
+                           <img src="${escapeHtml(optImage)}" alt="${escapeHtml(opt.text)}" style="max-width:120px; width:100%; height:auto; display:block; margin:0 auto; border-radius:8px;" />
+                         </div>`;
+            }
+
+            // button stays same class so existing handlers still find it
+            html += `<button class="large-rectangular" value="${escapeHtml(option)}" id="${escapeHtml(option)}" style="width:100%;">${escapeHtml(opt.text)}</button>`;
+
+            html += `</div>`; // .answer-wrapper
         }
+
+        html += `</div>`; // .answers-grid
+        html += `</div>`; // .question-block
+
         quizElement.innerHTML = html;
         attachButtonClickHandlers();
     } else {
-    
+        // no question found — nothing to display
+        quizElement.innerHTML = '';
     }
 }
 
