@@ -11,7 +11,6 @@ const questions = [
         // Question 1
 
         question: "You have to shop for groceries today! What are you wearing?",
-        image: "images/Q1/Q1_BG.png",
         answers: {
             A1_1: {
                 text: "Comfy and casual",
@@ -48,7 +47,6 @@ const questions = [
         // Question 2
 
         question: "What's your mood today?",
-        image: "images/Q2/Q2_BG.png",
         answers: {
             A1_2: {
                 text: "Calm and collected",
@@ -86,7 +84,6 @@ const questions = [
         // Question 3
 
         question: "What's your shopping cart vibe?",
-        image: "images/Q3/Q3_BG.png",
         answers: {
             A1_3: {
                 text: "Balanced! Boring but everything you need :)",
@@ -123,7 +120,6 @@ const questions = [
         // Question 4
 
         question: "It's time to shop! Where do you wanna go",
-        image: "images/Q4/Q4_BG.png",
         answers: {
             A1_4: {
                 text: "Fresh and produce corner",
@@ -160,7 +156,6 @@ const questions = [
         // Question 5
 
         question: "Put your headphones on. What are you listening?",
-        image: "images/Q5/Q5_BG.PNG",
         answers: {
             A1_5: {
                 text: "Chill lo-fi playlists or relaxing music",
@@ -198,7 +193,6 @@ const questions = [
         // Question 6
 
         question: "It's time to check out! What's your call?",
-        image: "images/Q6/Q6_BG.PNG",
         answers: {
             A1_6: {
                 text: "Organizing your items while patiently waiting",
