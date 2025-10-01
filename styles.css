@@ -137,6 +137,7 @@ question-image {
     margin-top: 20px; /* Adjust as needed */
     text-align: center;
     align-items: center;
+    
 }
 
 .result-image img {
@@ -144,6 +145,7 @@ question-image {
     height: auto;
     align-items: center;
     margin-top: 20px;
+    border: 2px solid #f0ebeb;
 }
 
 
