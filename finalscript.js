@@ -234,9 +234,11 @@ const questions = [
         answers: {
             KRAB: {
                 text: "Are you feeling it now Mr. Krabs?",
+                scores: { Coffee: +1, Tea_Bag: +1, Salt: +1, Rice: +1, Milk: +1},
             },
             PAT: {
                 text: "No, Patrick, Mayonnaise is not an instrument. Horseradish is not an instrument either.",
+                scores: { Egg: +1, Sugar: +1, Soy_Sauce: +1, Tea_Bag: +1, Cheese: +1},
             },
         },
     },
