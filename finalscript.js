@@ -522,20 +522,20 @@ function showResult() {
     imgEl.alt = (personalityData && personalityData.title) ? personalityData.title : winnerTrait || 'result image';
 
     // Build a clean trait-score breakdown (DOM-based)
-    let breakdown = document.getElementById('result-trait-breakdown');
-    if (breakdown) breakdown.remove(); // remove old one if present
-    breakdown = document.createElement('div');
-    breakdown.id = 'result-trait-breakdown';
-    const ul = document.createElement('ul');
+    // let breakdown = document.getElementById('result-trait-breakdown');
+    // if (breakdown) breakdown.remove(); // remove old one if present
+    // breakdown = document.createElement('div');
+    // breakdown.id = 'result-trait-breakdown';
+    // const ul = document.createElement('ul');
 
-    const sortedTraits = Object.keys(userAnswers || {}).sort();
-    for (const t of sortedTraits) {
-    const li = document.createElement('li');
-    li.textContent = `${t}: ${userAnswers[t] || 0}`;
-    ul.appendChild(li);
-    }
-    breakdown.appendChild(ul);
-    resultTextContainer.appendChild(breakdown);
+    // const sortedTraits = Object.keys(userAnswers || {}).sort();
+    // for (const t of sortedTraits) {
+    // const li = document.createElement('li');
+    // li.textContent = `${t}: ${userAnswers[t] || 0}`;
+    // ul.appendChild(li);
+    // }
+    // breakdown.appendChild(ul);
+    // resultTextContainer.appendChild(breakdown);
 
     // Show/hide UI
     const quizEl = document.getElementById('quiz');
