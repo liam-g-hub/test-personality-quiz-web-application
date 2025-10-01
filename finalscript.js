@@ -475,7 +475,7 @@ function showResult() {
     let displayImagePath = 'images/placeholder.png';
 
     if (personalityData) {
-        displayImagePath = 'images/Roster/' + personalityData.image;
+        displayImagePath = 'images/Pages/' + personalityData.image;
         
     }
 
