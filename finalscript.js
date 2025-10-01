@@ -16,31 +16,31 @@ const questions = [
             A1_1: {
                 text: "Comfy and casual",
                 scores: { Egg: +1, Tea_Bag: +1 },
-                image: "images/Q1/A1_1.png",
+                image: "images/Q1/Q1_A1_1.png",
             },
             
             A2_1: {
                 text: "Full-on work mode",
                 scores: { Coffee: +1, Soy_Sauce: +1 },
-                image: "images/Q1/A2_1.png",
+                image: "images/Q1/Q1_A2_1.png",
             },
 
             A3_1: {
                 text: "The coolest drip ever",
                 scores: { Rice: +1, Bread: +1 },
-                image: "images/Q1/A3_1.png",
+                image: "images/Q1/Q1_A3_1.png",
             },
 
             A4_1: {
                 text: "I'll go there in my pajamas",
                 scores: { Cheese: +1, Salt: +1 },
-                image: "images/Q1/A4_1.png",
+                image: "images/Q1/Q1_A4_1.png",
             },
 
             A5_1: {
                 text: "Something very aesthetic",
                 scores: { Sugar: +1, Milk: +1 },
-                image: "images/Q1/A5_1.png",
+                image: "images/Q1/Q1_A5_1.png",
             },
         },
     },
@@ -53,31 +53,31 @@ const questions = [
             A1_2: {
                 text: "Calm and collected",
                 scores: { Milk: +1, Bread: +1 },
-                image: "images/Q2/A1_2.png",
+                image: "images/Q2/Q2_A1_2.png",
             },
 
             A2_2: {
                 text: "Absolutely locked in",
                 scores: { Rice: +1, Egg: +1 },
-                image: "images/Q2/A2_2.png",
+                image: "images/Q2/Q2_A2_2.png",
             },
 
             A3_2: {
                 text: "All hands, ready for drama",
                 scores: { Tea_Bag: +1, Soy_Sauce: +1 },
-                image: "images/Q2/A3_2.png",
+                image: "images/Q2/Q2_A3_2.png",
             },
 
             A4_2: {
                 text: "No thoughts, empty head",
                 scores: { Cheese: +1, Sugar: +1 },
-                image: "images/Q2/A4_2.png",
+                image: "images/Q2/Q2_A4_2.png",
             },
 
             A5_2: {
                 text: "I wanna get this over with",
                 scores: { Coffee: +1, Salt: +1 },
-                image: "images/Q2/A5_2.png",
+                image: "images/Q2/Q2_A5_2.png",
             },
 
         },
@@ -91,31 +91,31 @@ const questions = [
             A1_3: {
                 text: "Balanced! Boring but everything you need :)",
                 scores: { Soy_Sauce: +1, Egg: +1 },
-                image: "images/Q3/A1_3.png",
+                image: "images/Q3/Q3_A1_3.png",
             },
 
             A2_3: {
                 text: "Functional like quick snacks and energy boosts.",
                 scores: { Coffee: +1, Bread: +1 },
-                image: "images/Q3/A2_3.png",
+                image: "images/Q3/Q3_A2_3.png",
             },
 
             A3_3: {
                 text: "Daring; full of herbs, spices and trying new things out ",
                 scores: { Milk: +1, Tea_Bag: +1 },
-                image: "images/Q3/A3_3.png",
+                image: "images/Q3/Q3_A3_3.png",
             },
 
             A4_3: {
                 text: "Absolutely messy. I'll put anything if I could",
                 scores: { Cheese: +1, Rice: +1 },
-                image: "images/Q3/A4_3.png",
+                image: "images/Q3/Q3_A4_3.png",
             },
 
             A5_3: {
                 text: "Chock-full of artisanal products that caters to a niche taste",
                 scores: { Salt: +1, Sugar: +1 },
-                image: "images/Q3/A5_3.png",
+                image: "images/Q3/Q3_A5_3.png",
             },
         },
     },
@@ -128,31 +128,31 @@ const questions = [
             A1_4: {
                 text: "Fresh and produce corner",
                 scores: { Tea_Bag: +1, Rice: +1 },
-                image: "images/Q4/A1_4.png",
+                image: "images/Q4/Q4_A1_4.png",
             },
 
             A2_4: {
                 text: "Coffee and drinks aisle",
                 scores: { Coffee: +1, Milk: +1 },
-                image: "images/Q4/A2_4.png",
+                image: "images/Q4/Q4_A2_4.png",
             },
 
             A3_4: {
                 text: "Bakery section",
                 scores: { Bread: +1, Egg: +1 },
-                image: "images/Q4/A3_4.png",
+                image: "images/Q4/Q4_A3_4.png",
             },
 
             A4_4: {
                 text: "Candy and snacks area",
                 scores: { Sugar: +1, Soy_Sauce: +1 },
-                image: "images/Q4/A4_4.png",
+                image: "images/Q4/Q4_A4_4.png",
             },
 
             A5_4: {
                 text: "Free tastings",
                 scores: { Cheese: +1, Salt: +1 },
-                image: "images/Q4/A5_4.png",
+                image: "images/Q4/Q4_A5_4.png",
             },
         },
     },
@@ -165,31 +165,31 @@ const questions = [
             A1_5: {
                 text: "Chill lo-fi playlists or relaxing music",
                 scores: { Sugar: +1, Milk: +1 },
-                image: "images/Q5/A1_5.png",
+                image: "images/Q5/Q5_A1_5.png",
             },
 
             A2_5: {
                 text: "Podcasts or listening to the radio",
                 scores: { Tea_Bag: +1, Salt: +1 },
-                image: "images/Q5/A2_5.png",
+                image: "images/Q5/Q5_A2_5.png",
             },
 
             A3_5: {
                 text: "Tracks that simply vibe with you",
                 scores: { Soy_Sauce: +1, Egg: +1 },
-                image: "images/Q5/A3_5.png",
+                image: "images/Q5/Q5_A3_5.png",
             },
 
             A4_5: {
                 text: "The most random songs that you hear when you shuffle",
                 scores: { Cheese: +1, Rice: +1 },
-                image: "images/Q5/A4_5.png",
+                image: "images/Q5/Q5_A4_5.png",
             },
 
             A5_5: {
                 text: "Just listening to a vlog or a YouTube commentary",
                 scores: { Bread: +1, Coffee: +1 },
-                image: "images/Q5/A5_5.png",
+                image: "images/Q5/Q5_A5_5.png",
             },
 
         },
@@ -203,31 +203,31 @@ const questions = [
             A1_6: {
                 text: "Organizing your items while patiently waiting",
                 scores: { Rice: +1, Soy_Sauce: +1 },
-                image: "images/Q6/A1_6.png",
+                image: "images/Q6/Q6_A1_6.png",
             },
 
             A2_6: {
                 text: " Checking your phone for any emails, schedules, etc.",
                 scores: { Coffee: +1, Milk: +1 },
-                image: "images/Q6/A2_6.png",
+                image: "images/Q6/Q6_A2_6.png",
             },
 
             A3_6: {
                 text: "Casually gossiping with the cashier or the customers behind you",
                 scores: { Salt: +1, Egg: +1 },
-                image: "images/Q6/A3_6.png",
+                image: "images/Q6/Q6_A3_6.png",
             },
 
             A4_6: {
                 text: "Doomscrolling or watching brainrot videos from your phone",
                 scores: { Cheese: +1, Bread: +1 },
-                image: "images/Q6/A4_6.png",
+                image: "images/Q6/Q6_A4_6.png",
             },
 
             A5_6: {
                 text: "Daydreaming",
                 scores: { Sugar: +1, Tea_Bag: +1 },
-                image: "images/Q6/A5_6.png",
+                image: "images/Q6/Q6_A5_6.png",
             },
 
         },
