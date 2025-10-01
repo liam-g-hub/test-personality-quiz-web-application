@@ -250,52 +250,52 @@ const questions = [
 
 const resultOptions = {
     "Egg": {
-        image: "Egg.gif",
+        image: "Egg.png",
         title: "Egg",
         description: "well-rounded, loves company"
     },
     "Coffee": {
-        image: "Coffee.gif",
+        image: "Coffee.png",
         title: "Coffee",
         description: "workaholic, realist"
     },
     "Bread": {
-        image: "Bread.gif",
+        image: "Bread.png",
         title: "Bread",
         description: "warm and dependable, can get along with others easily"
     },
     "Tea Bag": {
-        image: "Tea_Bag.gif",
+        image: "Tea_Bag.png",
         title: "Tea Bag",
         description: "the friend who gives advice"
     },
     "Rice": {
-        image: "Rice.gif",
+        image: "Rice.png",
         title: "Rice",
         description: "the MVP, the one who carries everyone"
     },
     "Sugar": {
-        image: "Sugar.gif",
+        image: "Sugar.png",
         title: "Sugar",
         description: "hopeless romantic"
     },
     "Milk": {
-        image: "Milk.gif",
+        image: "Milk.png",
         title: "Milk",
         description: "the parental figure of the group"
     },
     "Salt": {
-        image: "Salt.gif",
+        image: "Salt.png",
         title: "Salt",
         description: "sassy, down-to-earth"
     },
     "Cheese": {
-        image: "Cheese.gif",
+        image: "Cheese.png",
         title: "Cheese",
         description: "loves telling corny jokes"
     },
     "Soy Sauce": { 
-        image: "Soy_Sauce.gif",
+        image: "Soy_Sauce.png",
         title: "Soy Sauce",
         description: "sociable and fixer-upper"
     },
